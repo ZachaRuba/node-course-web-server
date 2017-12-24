@@ -23,11 +23,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-    res.render('maintinance.hbs');
-    next();
-});
-
 //To use middleware, we use the app.use function.
 app.use(express.static(__dirname + '/public'));
 
@@ -40,7 +35,9 @@ hbs.registerHelper('screamIt', (text)=>{
 });
 
 app.get('/', (req, res) =>{
-  res.send('<h1>hello world</h1>');
+  res.render('home.hbs', {
+    welcomeMsg: "Welcome to my page!  \n Have a good time!",
+    header: 'Home Page'
 });
 
 app.get('/about', (req, res)=>{
@@ -50,10 +47,10 @@ app.get('/about', (req, res)=>{
   });
 });
 
-app.get('/home', (req, res)=>{
-  res.render('home.hbs', {
-    welcomeMsg: "Welcome to my page!  \n Have a good time!",
-    header: 'Home Page'
+app.get('/projects', (req, res)=>{
+  res.render('projects.hbs', {
+    welcomeMsg: "This is my Projects page! You can find all the things I create here.",
+    header: 'Projects'
   });
 });
 
@@ -65,4 +62,4 @@ app.get('/bad', (req, res)=>{
 
 app.listen(port, () => {
   console.log(`server is up on port ${port}`);
-});
+})
