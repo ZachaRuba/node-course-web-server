@@ -38,6 +38,7 @@ app.get('/', (req, res) =>{
   res.render('home.hbs', {
     welcomeMsg: "Welcome to my page!  \n Have a good time!",
     header: 'Home Page'
+  });
 });
 
 app.get('/about', (req, res)=>{
@@ -60,6 +61,4 @@ app.get('/bad', (req, res)=>{
   });
 });
 
-app.listen(port, () => {
-  console.log(`server is up on port ${port}`);
-})
+app.listen(port, () => console.log(`server is up on port ${port}`));
